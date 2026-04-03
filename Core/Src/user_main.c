@@ -64,6 +64,7 @@ void ReadTask(void *argument) {
 
 void TestSend(void *argument){
 
+  vTaskDelay(pdMS_TO_TICKS(800));
   
   while (1)
   {
@@ -72,7 +73,7 @@ void TestSend(void *argument){
     buf[1] = (loopCnt >> 16) & 0xFF; // Address byte 1
     buf[2] = (loopCnt >> 8) & 0xFF; // Address byte 2
     buf[3] = loopCnt & 0xFF; // Address byte 3  
-    buf[4] = 0xFE; // Nested byte
+    buf[4] = 0x00; // Nested byte
     rb_send_spi_data(buf, sizeof(buf)); // Send command and address over SPI
 		// fm_read_record(loopCnt, buf);
 //		rb_CsSet();

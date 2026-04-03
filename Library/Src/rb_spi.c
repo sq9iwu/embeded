@@ -11,6 +11,7 @@
 #include "semphr.h"
 
 #include "cmsis_helpers.h"
+#include <stdint.h>
 
 #include "rb_spi.h"
 
@@ -149,9 +150,9 @@ uint8_t rb_SpiWriteByte(uint8_t data){
 void rb_SpiWriteBuffer(uint8_t* data, uint32_t len){
 
 	uint32_t i = 0;
-	uint32_t temp = 0;
 
 	uint8_t testBuf[69] = {0};
+
 
 	rb_CsReset(); // Ustawienie CS nisko przed rozpoczęciem transmisji
 
